@@ -31,5 +31,15 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
+
+  if (query.toLowerCase().includes("plus")) {
+    const numberMatches = query.match(/\d+/g);
+    if (numberMatches && numberMatches.length >= 2) {
+      const numbers = numberMatches.map(num => parseInt(num, 10));
+      const sum = numbers.reduce((total, num) => total + num, 0);
+      return sum.toString();
+    }
+  }
+
   return "";
 }

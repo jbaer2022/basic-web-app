@@ -37,4 +37,10 @@ describe("QueryProcessor", () => {
         const response: string = QueryProcessor(query);
         expect(response).toBe("73");
     });
+
+    test('should handle addition', () => {
+        const query = "What is 96 plus 15?";
+        const response: string = QueryProcessor(query);
+        expect(response).toBe("111");
+    });
 });
