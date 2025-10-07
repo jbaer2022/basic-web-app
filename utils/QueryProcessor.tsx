@@ -15,5 +15,21 @@ export default function QueryProcessor(query: string): string {
     return "jbaer";
   }
 
+  if (query.toLowerCase().includes("largest") && query.includes(":")) {
+    // Extract numbers from the query after the colon
+    const colonIndex = query.indexOf(":");
+    if (colonIndex !== -1) {
+      const numbersPart = query.substring(colonIndex + 1);
+      // Use regex to find all integers in the string
+      const numberMatches = numbersPart.match(/\d+/g);
+      if (numberMatches && numberMatches.length > 0) {
+        // Convert string matches to integers and find the maximum
+        const numbers = numberMatches.map(num => parseInt(num, 10));
+        const largest = Math.max(...numbers);
+        return largest.toString();
+      }
+    }
+  }
+
   return "";
 }
